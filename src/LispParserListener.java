@@ -47,6 +47,16 @@ public interface LispParserListener extends ParseTreeListener {
 	 */
 	void exitPrintStatement(LispParser.PrintStatementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link LispParser#arithmeticOp}.
+	 * @param ctx the parse tree
+	 */
+	void enterArithmeticOp(LispParser.ArithmeticOpContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LispParser#arithmeticOp}.
+	 * @param ctx the parse tree
+	 */
+	void exitArithmeticOp(LispParser.ArithmeticOpContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link LispParser#comparisonOp}.
 	 * @param ctx the parse tree
 	 */
@@ -116,6 +126,16 @@ public interface LispParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitLetBinding(LispParser.LetBindingContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LispParser#binding}.
+	 * @param ctx the parse tree
+	 */
+	void enterBinding(LispParser.BindingContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LispParser#binding}.
+	 * @param ctx the parse tree
+	 */
+	void exitBinding(LispParser.BindingContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LispParser#lambdaExpression}.
 	 * @param ctx the parse tree

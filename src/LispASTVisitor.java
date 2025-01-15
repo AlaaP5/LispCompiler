@@ -12,63 +12,49 @@ public class LispASTVisitor extends LispParserBaseVisitor<String> {
     }
 
     @Override
-    public String visitComparisonOp(LispParser.ComparisonOpContext ctx) {
-        String operator = ctx.getChild(1).getText();
-        String operationName;
+    public String visitArithmeticOp(LispParser.ArithmeticOpContext ctx) {
 
-        switch (operator) {
-            case "+":
-                operationName = "Addition";
-                break;
-            case "-":
-                operationName = "Subtraction";
-                break;
-            case "*":
-                operationName = "Multiplication";
-                break;
-            case "/":
-                operationName = "Division";
-                break;
-            case ">":
-                operationName = "Greater_than";
-                break;
-            case "<":
-                operationName = "Less_than";
-                break;
-            case ">=":
-                operationName = "Greater_equal";
-                break;
-            case "<=":
-                operationName = "Less_equal";
-                break;
-            case "=":
-                operationName = "Equal";
-                break;
-            case "/=":
-                operationName = "Not_Equal";
-                break;
-            case "%":
-                operationName = "Rest";
-                break;
-            case "and":
-                operationName = "And";
-                break;
-            case "or":
-                operationName = "Or";
-                break;
-            case "not":
-                operationName = "Not";
-                break;
-            case "equal":
-                operationName = "Equal";
-                break;
-            default:
-                operationName = "Unknown Operation";
-        }
+        String operator = ctx.getChild(1).getText();
+        String operationName = switch (operator) {
+            case "+" -> "Addition";
+            case "-" -> "Subtraction";
+            case "*" -> "Multiplication";
+            case "/" -> "Division";
+            case "%" -> "Modulus";
+            default -> "Unknown Operation";
+        };
 
         String leftOperand = visit(ctx.expression(0));
         String rightOperand = visit(ctx.expression(1));
-        return "Arithmetic : (" + "operation: " + operationName + " \n\t| Left: " + leftOperand + " \n\t| Right: " + rightOperand + ")";
+
+        return "Arithmetic: (" + operationName +
+                " | Left: " + leftOperand +
+                " | Right: " + rightOperand + ")";
+    }
+
+    @Override
+    public String visitComparisonOp(LispParser.ComparisonOpContext ctx) {
+
+        String operator = ctx.getChild(1).getText();
+        String operationName = switch (operator) {
+            case ">" -> "Greater Than";
+            case "<" -> "Less Than";
+            case ">=" -> "Greater or Equal";
+            case "<=" -> "Less or Equal";
+            case "=" -> "Equal";
+            case "/=" -> "Not Equal";
+            case "and" -> "And";
+            case "or" -> "Or";
+            case "not" -> "Not";
+            default -> "Unknown Comparison";
+        };
+
+        String leftOperand = visit(ctx.expression(0));
+        String rightOperand = visit(ctx.expression(1));
+
+        return "Comparison: (" + operationName +
+                " | Left: " + leftOperand +
+                " | Right: " + rightOperand + ")";
     }
 
     @Override
@@ -94,7 +80,7 @@ public class LispASTVisitor extends LispParserBaseVisitor<String> {
 
         for (int i = 1; i < ctx.SYMBOL().size(); i++) {
 
-            params.append(ctx.SYMBOL(i).getText()).append(" ");
+            params.append(ctx.SYMBOL(i).getText()).append("  ");
         }
 
         StringBuilder body = new StringBuilder();
@@ -144,16 +130,30 @@ public class LispASTVisitor extends LispParserBaseVisitor<String> {
 
     @Override
     public String visitLetBinding(LispParser.LetBindingContext ctx) {
+
         StringBuilder bindings = new StringBuilder("Bindings:\n");
-        for (LispParser.ExpressionContext binding : ctx.expression()) {
-            bindings.append(visit(binding)).append("\n");
+        for (LispParser.BindingContext bindingCtx : ctx.binding()) {
+            bindings.append(visit(bindingCtx)).append("\n");
         }
-        StringBuilder body = new StringBuilder();
-        for (LispParser.ExpressionContext expression : ctx.expression()) {
-            body.append(visit(expression)).append("\n");
+
+        StringBuilder body = new StringBuilder("Body:\n");
+        for (LispParser.ExpressionContext expressionCtx : ctx.expression()) {
+            body.append(visit(expressionCtx)).append("\n");
         }
-        return "Let Binding:\n" + bindings + "\nBody:\n" + body;
+
+        return "Let Binding:\n" + bindings + body;
     }
+
+    @Override
+    public String visitBinding(LispParser.BindingContext ctx) {
+
+        String variableName = ctx.SYMBOL().getText();
+        String value = visit(ctx.expression());
+        return "Variable: " + variableName + " = " + value;
+    }
+
+
+
 
     @Override
     public String visitLambdaExpression(LispParser.LambdaExpressionContext ctx) {

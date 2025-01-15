@@ -34,6 +34,12 @@ public interface LispParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrintStatement(LispParser.PrintStatementContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link LispParser#arithmeticOp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitArithmeticOp(LispParser.ArithmeticOpContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link LispParser#comparisonOp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -75,6 +81,12 @@ public interface LispParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitLetBinding(LispParser.LetBindingContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LispParser#binding}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBinding(LispParser.BindingContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LispParser#lambdaExpression}.
 	 * @param ctx the parse tree

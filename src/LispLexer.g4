@@ -56,24 +56,20 @@ DOT: '.';
 PIPE: '|';
 PERCENT: '%';
 
-// (Symbols)
+
 SYMBOL: [a-zA-Z*+-/<>?='][a-zA-Z0-9*+-/<>?=']*;
 
 
-// (Parentheses)
 OPEN_BRACKETS: '(';
 CLOSE_BRACKETS: ')';
 
 
-
-// (Literals)
 STRING: '"' (~["\\] | '\\' .)* '"';
 NUMBER: [+-]?[0-9]+ ('.' [0-9]+)?;
 BOOLEAN: 'true' | 'false';
 NIL: 'nil';
 
 
-// (Comments and Whitespace)
 COMMENT: ';' ~[\r\n]* -> skip;
 WS: [ \t\r\n]+ -> skip;
 
