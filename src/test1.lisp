@@ -12,7 +12,6 @@
 (process-strings)
 
 
-
 (defun process-strings2 ()
   "Process a list of strings and print those starting with 'a'."
   (let ((string-array '("apple" "banana" "avocado" "cherry" "apricot")))
@@ -20,10 +19,6 @@
       (when (funcall (lambda (s) (string= (subseq s 0 1) "a")) str)
         (format t "String starts with 'a': ~A~%" str)))))
 (process-strings2)
-
-
-
-
 
 
 (defun process-strings4 ()
@@ -34,10 +29,10 @@
 (process-strings4)
 
 
-(write ((lambda (a b c x)
+(write (lambda (a b c x)
    (* a b c x))
    4 2 9 3)
-)
+
 
 
 

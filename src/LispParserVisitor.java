@@ -22,6 +22,18 @@ public interface LispParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFunctionCall(LispParser.FunctionCallContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link LispParser#internalFunctionCall}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitInternalFunctionCall(LispParser.InternalFunctionCallContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LispParser#writeExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWriteExpression(LispParser.WriteExpressionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link LispParser#expression}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -34,6 +46,18 @@ public interface LispParserVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitPrintStatement(LispParser.PrintStatementContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link LispParser#dolistExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDolistExpression(LispParser.DolistExpressionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LispParser#whenExpression}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhenExpression(LispParser.WhenExpressionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link LispParser#arithmeticOp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -45,6 +69,12 @@ public interface LispParserVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitComparisonOp(LispParser.ComparisonOpContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link LispParser#quotedList}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitQuotedList(LispParser.QuotedListContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link LispParser#atom}.
 	 * @param ctx the parse tree

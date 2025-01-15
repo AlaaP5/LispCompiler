@@ -32,6 +32,9 @@ CASE: 'case';
 CATCH: 'catch';
 THROW: 'throw';
 LAMBDA: 'lambda';
+DOLIST: 'dolist';
+WHEN: 'when';
+WRITE: 'write';
 
 
 // (Built-in Functions)
@@ -40,6 +43,9 @@ FORMAT: 'format';
 APPLY: 'apply';
 FUNCALL: 'funcall';
 PRINT: 'print';
+STRING_E: 'string=';
+SUBSEQ: 'subseq';
+LENGTH: 'length';
 
 EQUALW: 'equal';
 AND: 'and';

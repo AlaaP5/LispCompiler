@@ -1,5 +1,5 @@
 import org.antlr.v4.runtime.*;
-
+import java.util.Scanner;
 import org.antlr.v4.runtime.*;
 import org.antlr.v4.runtime.tree.*;
 import java.io.IOException;
@@ -15,8 +15,7 @@ public class Main {
 
         String input2 = new String(Files.readAllBytes(Paths.get("C:/Users/LENOVO/Desktop/LispCompiler/src/test2.lisp")));
 
-
-        CharStream charStream = CharStreams.fromString(input1);
+        CharStream charStream = CharStreams.fromString(input2);
 
         LispLexer lexer = new LispLexer(charStream);
 
@@ -30,8 +29,10 @@ public class Main {
 
         System.out.println(result);
 
+
 //        for (Token token : lexer.getAllTokens()) {
 //            System.out.println("Token: " + token.getText() + ", Type: " + lexer.getVocabulary().getSymbolicName(token.getType()));
 //        }
+
     }
 }

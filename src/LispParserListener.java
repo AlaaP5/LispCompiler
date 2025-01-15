@@ -27,6 +27,26 @@ public interface LispParserListener extends ParseTreeListener {
 	 */
 	void exitFunctionCall(LispParser.FunctionCallContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link LispParser#internalFunctionCall}.
+	 * @param ctx the parse tree
+	 */
+	void enterInternalFunctionCall(LispParser.InternalFunctionCallContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LispParser#internalFunctionCall}.
+	 * @param ctx the parse tree
+	 */
+	void exitInternalFunctionCall(LispParser.InternalFunctionCallContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LispParser#writeExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterWriteExpression(LispParser.WriteExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LispParser#writeExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitWriteExpression(LispParser.WriteExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link LispParser#expression}.
 	 * @param ctx the parse tree
 	 */
@@ -47,6 +67,26 @@ public interface LispParserListener extends ParseTreeListener {
 	 */
 	void exitPrintStatement(LispParser.PrintStatementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link LispParser#dolistExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterDolistExpression(LispParser.DolistExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LispParser#dolistExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitDolistExpression(LispParser.DolistExpressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LispParser#whenExpression}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhenExpression(LispParser.WhenExpressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LispParser#whenExpression}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhenExpression(LispParser.WhenExpressionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link LispParser#arithmeticOp}.
 	 * @param ctx the parse tree
 	 */
@@ -66,6 +106,16 @@ public interface LispParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitComparisonOp(LispParser.ComparisonOpContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link LispParser#quotedList}.
+	 * @param ctx the parse tree
+	 */
+	void enterQuotedList(LispParser.QuotedListContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link LispParser#quotedList}.
+	 * @param ctx the parse tree
+	 */
+	void exitQuotedList(LispParser.QuotedListContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LispParser#atom}.
 	 * @param ctx the parse tree
