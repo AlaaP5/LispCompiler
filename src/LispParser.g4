@@ -36,7 +36,7 @@ expression:
     | whenExpression
     | quotedList
     | whenExpression
-    | atom
+    | operations
     | printStatement;
 
 
@@ -57,14 +57,14 @@ arithmeticOp:
 
 
 comparisonOp:
-    OPEN_BRACKETS (STRING_E | PERCENT | AND | OR | NOT | EQUALW | GREATER_THAN | LESS_THAN | GREATER_EQUAL | LESS_EQUAL | EQUAL) expression expression CLOSE_BRACKETS;
+    OPEN_BRACKETS (STRING_E | AND | OR | NOT | EQUALW | GREATER_THAN | LESS_THAN | GREATER_EQUAL | LESS_EQUAL | EQUAL) expression expression CLOSE_BRACKETS;
 
 
 quotedList:
     QUOTE OPEN_BRACKETS (STRING | SYMBOL)* CLOSE_BRACKETS;
 
 
-atom:
+operations:
     comparisonOp
     | NUMBER
     | STRING

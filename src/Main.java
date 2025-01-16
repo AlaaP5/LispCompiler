@@ -15,7 +15,7 @@ public class Main {
 
         String input2 = new String(Files.readAllBytes(Paths.get("C:/Users/LENOVO/Desktop/LispCompiler/src/test2.lisp")));
 
-        CharStream charStream = CharStreams.fromString(input2);
+        CharStream charStream = CharStreams.fromString(input1);
 
         LispLexer lexer = new LispLexer(charStream);
 

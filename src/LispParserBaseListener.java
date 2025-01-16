@@ -148,13 +148,13 @@ public class LispParserBaseListener implements LispParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAtom(LispParser.AtomContext ctx) { }
+	@Override public void enterOperations(LispParser.OperationsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAtom(LispParser.AtomContext ctx) { }
+	@Override public void exitOperations(LispParser.OperationsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

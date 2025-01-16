@@ -30,8 +30,7 @@
 
 
 (write (lambda (a b c x)
-   (* a b c x))
-   4 2 9 3)
+   (* a b c x)))
 
 
 

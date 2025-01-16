@@ -117,15 +117,15 @@ public interface LispParserListener extends ParseTreeListener {
 	 */
 	void exitQuotedList(LispParser.QuotedListContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link LispParser#atom}.
+	 * Enter a parse tree produced by {@link LispParser#operations}.
 	 * @param ctx the parse tree
 	 */
-	void enterAtom(LispParser.AtomContext ctx);
+	void enterOperations(LispParser.OperationsContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link LispParser#atom}.
+	 * Exit a parse tree produced by {@link LispParser#operations}.
 	 * @param ctx the parse tree
 	 */
-	void exitAtom(LispParser.AtomContext ctx);
+	void exitOperations(LispParser.OperationsContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link LispParser#functionDef}.
 	 * @param ctx the parse tree

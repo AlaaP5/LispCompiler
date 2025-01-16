@@ -27,12 +27,12 @@ public class LispASTVisitor extends LispParserBaseVisitor<String> {
         };
 
         if(ctx.expression().size() > 2) {
-            StringBuilder operands = new StringBuilder("Operands: [ ");
+            StringBuilder variables = new StringBuilder("Operands: [ ");
             for (int i=0; i<ctx.expression().size(); i++) {
-                operands.append(visit(ctx.expression(i))).append(" ");
+                variables.append(visit(ctx.expression(i))).append(" ");
             }
             return "Arithmetic: (" + operationName +
-                    " | " + operands + "]";
+                    " | " + variables + "]";
         }
 
         String leftOperand = visit(ctx.expression(0));
@@ -79,7 +79,7 @@ public class LispASTVisitor extends LispParserBaseVisitor<String> {
 
 
     @Override
-    public String visitAtom(LispParser.AtomContext ctx) {
+    public String visitOperations(LispParser.OperationsContext ctx) {
         if (ctx.SYMBOL() != null) return "Symbol: " + ctx.SYMBOL().getText();
         if (ctx.NUMBER() != null) return "Number: " + ctx.NUMBER().getText();
         if (ctx.STRING() != null) return "String: " + ctx.STRING().getText();
